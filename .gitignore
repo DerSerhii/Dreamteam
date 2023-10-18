@@ -1,0 +1,9 @@
+.idea/*
+
+.env
+/.env
+dreamteam_project/.env
+
+dreamteam_project/__pycache__/*
+dreamteam_project/dreamteam_project/__pycache__/*
+/__pycache__/*

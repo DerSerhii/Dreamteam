@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dreamteam-project"
+version = "0.1.0"
+description = ""
+authors = ["DerSerhii <deriuhins@gmail.com>"]
+readme = "README.md"
+packages = [{include = "dreamteam_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "^2.9.9"
+djangorestframework = "^3.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
