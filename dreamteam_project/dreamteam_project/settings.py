@@ -161,14 +161,14 @@ LOGGING = {
     },
     'loggers': {
         'django.db.backends': {
-            # 'level': 'DEBUG',
+            'level': 'DEBUG',
             'handlers': ['console'],
         },
     },
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': dt.timedelta(hours=3),
+    'ACCESS_TOKEN_LIFETIME': dt.timedelta(hours=12),
     'REFRESH_TOKEN_LIFETIME': dt.timedelta(days=2),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
