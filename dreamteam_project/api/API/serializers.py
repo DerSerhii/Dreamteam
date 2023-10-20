@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from ..models import Member
+from ..models import Member, Team, TeamMembership
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -10,4 +10,21 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = ('username', 'first_name', 'last_name', 'position', 'email')
+        fields = ('id', 'username', 'first_name', 'last_name', 'position', 'email')
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Team model.
+    """
+    members = serializers.StringRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = Team
+        fields = ('id', 'name', 'members')
+
+
+class TeamMembershipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamMembership
+        fields = '__all__'
