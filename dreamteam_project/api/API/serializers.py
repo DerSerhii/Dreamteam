@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from ..models import Member, Team, TeamMembership
+from ..models import Member, MemberPosition, Team, TeamMembership
 
 
 class MemberSerializer(serializers.ModelSerializer):

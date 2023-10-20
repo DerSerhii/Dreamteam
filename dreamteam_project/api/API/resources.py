@@ -1,9 +1,7 @@
-from rest_framework import viewsets, status
-from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets, views
 from rest_framework.response import Response
 
-from ..models import Member, Team, TeamMembership
+from ..models import Member, Team, TeamMembership, MemberPosition
 from .serializers import (
     MemberSerializer,
     TeamSerializer,
@@ -12,7 +10,6 @@ from .serializers import (
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
     queryset = Member.objects.only(
         'username',
         'first_name',
@@ -21,6 +18,12 @@ class MemberViewSet(viewsets.ModelViewSet):
         'email',
     )
     serializer_class = MemberSerializer
+
+
+class MemberPositionView(views.APIView):
+    def get(self, request):
+        data = dict(MemberPosition.choices)
+        return Response(data)
 
 
 class TeamViewSet(viewsets.ModelViewSet):
