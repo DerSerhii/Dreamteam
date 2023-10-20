@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext as _
+from rest_framework.exceptions import ValidationError
 
 
 class MemberPosition(models.TextChoices):
@@ -23,7 +24,12 @@ class MemberPosition(models.TextChoices):
 
 
 class Member(AbstractUser):
-    position = models.CharField(_('Position'), max_length=3, choices=MemberPosition.choices)
+    email = models.EmailField(_("email address"), unique=True, blank=True)
+    position = models.CharField(
+        _('Position'),
+        max_length=3,
+        choices=MemberPosition.choices
+    )
     is_manager = models.BooleanField(default=False)
 
     class Meta:
