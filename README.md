@@ -4,6 +4,8 @@ This project was completed as part of the **Wht.agency** test task.<br>
 This is done using the **Django** and **Django REST** frameworks. <br>
 **Postgres** database was used to store and work with data.<br>
 **JSON Web Token (JWT)** is used for user authentication.
+
+API documentation: http://127.0.0.1:8000/swagger/ (*start a test server*)
 <hr>
 
 ## Description
@@ -22,6 +24,7 @@ You can create another manager with it or use it and the process will start.
 
 There are members with positions that can only be added to one team, for example Trainee, Junior, Intermediate, etc. <br>
 And there are positions that can be in different teams at the same time such as PM, DevOps, QA, etc.
+
 
 <hr>
 
