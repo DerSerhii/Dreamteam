@@ -23,10 +23,10 @@ router.register(r'teams', TeamViewSet)
 
 urlpatterns = [
     # Resource URLs
-    path('member-positions/', MemberPositionView.as_view()),
-    path('available-members/', MembersAvailableView.as_view()),
-    path('team-add-member/', TeamMemberAddAPIView.as_view()),
-    path('team-delete-member/<int:pk>/', TeamMemberDeleteView.as_view()),
+    path('member-positions/', MemberPositionView.as_view(), name='member-positions'),
+    path('available-members/', MembersAvailableView.as_view(), name='available-members'),
+    path('team-add-member/', TeamMemberAddAPIView.as_view(), name='team-member-add'),
+    path('team-delete-member/<int:pk>/', TeamMemberDeleteView.as_view(), name='team-member-delete'),
     path('', include(router.urls)),
 
     # Authentication URLs
