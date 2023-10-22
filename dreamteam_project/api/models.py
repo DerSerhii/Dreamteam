@@ -22,6 +22,14 @@ class MemberPosition(models.TextChoices):
     UI_UX = 'UI', _('UI/UX Designer')
     CEO = 'CEO', _('Chief Executive Officer')
 
+    @classmethod
+    def only_one_team(cls):
+        return ['INT', 'JUN', 'SEN', 'MID', 'TCH']
+
+    @classmethod
+    def allow_manage(cls):
+        return ['CEO', 'TML', 'PM']
+
 
 class Member(AbstractUser):
     email = models.EmailField(_('Email address'), unique=True, blank=True)
@@ -38,7 +46,7 @@ class Member(AbstractUser):
         """
         Overridden default save method to set ...
         """
-        if self.is_superuser or self.position in ['CEO', 'TML', 'PM']:
+        if self.is_superuser or self.position in MemberPosition.allow_manage():
             self.is_manager = True
 
         if password := self.password:
