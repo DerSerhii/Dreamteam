@@ -1,5 +1,5 @@
 """
-The module represents custom permission classes used in a project.
+The module represents CUSTOM PERMISSION classes used in the project.
 """
 
 from rest_framework.permissions import BasePermission

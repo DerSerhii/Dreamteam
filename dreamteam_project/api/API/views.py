@@ -19,14 +19,14 @@ from .permissions import (
 )
 from .serializers import (
     MembersViewSerializer,
-    TeamSerializer,
+    TeamViewSerializer,
     TeamMembershipEditSerializer,
 )
 
 
 class TeamViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, IsManagerOrReadOnlyOwnTeam)
-    serializer_class = TeamSerializer
+    serializer_class = TeamViewSerializer
     filter_backends = (SearchFilter,)
     search_fields = ('name',)
     queryset = Team.objects.prefetch_related(
@@ -63,6 +63,8 @@ class TeamMemberAddAPIView(generics.CreateAPIView):
 
     @transaction.atomic
     def create(self, request, *args, **kwargs):
+        # In validation serializers is select_for_update()
+        # see validate() TeamMembershipEditSerializer
         return super().create(request, *args, **kwargs)
 
 
