@@ -24,6 +24,10 @@ class MemberPosition(models.TextChoices):
 
     @classmethod
     def only_one_team(cls):
+        """
+        Returns member positions.
+        Members with these positions can only be on one team.
+        """
         return ['INT', 'JUN', 'SEN', 'MID', 'TCH']
 
     @classmethod

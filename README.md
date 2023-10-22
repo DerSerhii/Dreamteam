@@ -20,7 +20,7 @@ After transferring the username and password, the new member can enter the syste
 For the initial entrance, you need to create a django superuser. Superuser is granted the manager role by default.
 You can create another manager with it or use it and the process will start.
 
-There are positions that can be added to only one team such as Intern, Junior, Middle, etc. <br>
+There are members with positions that can only be added to one team, for example Trainee, Junior, Intermediate, etc. <br>
 And there are positions that can be in different teams at the same time such as PM, DevOps, QA, etc.
 
 <hr>
