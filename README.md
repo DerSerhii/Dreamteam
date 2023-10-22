@@ -1,11 +1,33 @@
 # DREAM TEAM API
 
-This project is made as part of a test task.
-This is done using the [Django](https://www.djangoproject.com/)
-and [Django REST](https://www.django-rest-framework.org/) frameworks.
+This project was completed as part of the **Wht.agency** test task.<br>
+This is done using the **Django** and **Django REST** frameworks. <br>
+**Postgres** database was used to store and work with data.<br>
+**JSON Web Token (JWT)** is used for user authentication.
+<hr>
+
+## Description
+Provided endpoints allow you to create closed memberships.
+An example of such a membership in this project is the simplified IT structure of the company.
+
+Each member has his own position in the company, which can change. Certain positions have a manager role.
+
+Individual teams can be created within company. Only managers can create teams, add or remove members there.<br>
+Within this project, teams can create positions such as PMs and Team Leads.
+
+Membership is closed internally. Anyone can't register there. Only the manager can add a new member.
+After transferring the username and password, the new member can enter the system.<br>
+For the initial entrance, you need to create a django superuser. Superuser is granted the manager role by default.
+You can create another manager with it or use it and the process will start.
+
+There are positions that can be added to only one team such as Intern, Junior, Middle, etc. <br>
+And there are positions that can be in different teams at the same time such as PM, DevOps, QA, etc.
+
+<hr>
 
 ### Getting started
-Download the code base on your local machine. You may prefer to use virtual environment 
+1. Download the code base on your local machine.
+2. You may prefer to use virtual environment 
 to separate the project's dependencies from other packages you have installed.
 
 To install dependencies use `pip` or [poetry](https://python-poetry.org/):
@@ -15,12 +37,22 @@ pip install -r requirements.txt
 ```commandline
 poetry install
 ```
-After downloading the project, set the required environment variables.
-Refer the table in *Environment variables* section for more information.
 
-#### Environment variables
-The project requires some environment variables defined. To set up an environ variable do:
-1. Create `.env` file in the root of Django project.
+3. You must have [Postgres](https://www.postgresql.org/) database system installed. <br  >
+Сreate a database, user and password according to the `DATABASES` in `settings.py` or change them to your own.
+```commandline
+sudo -u postgres psql
+postgres=# create database dreamteam_db with encoding 'UTF8';
+postgres=# create user dreamteam_user with password 'mypass';
+postgres=# grant all on database dreamteam_db to dreamteam_user;
+\c dreamteam_db
+postgres=# grant all on schema public to dreamteam_user;
+\q
+```
+
+4. The project requires some environment variables defined. To set up an environ variable do:
+
+- Create `.env` file in the root of Django project.
 ```
 .
 ├── dreamteam_project
@@ -38,9 +70,9 @@ The project requires some environment variables defined. To set up an environ va
 ├── pyproject.toml
 ├── README.md
 └── requirements.txt
-
 ```
-2. Paste the following entry in the `.env` file:
+
+- Paste the following entry in the `.env` file:
 ```
 DATABASES_PASSWORD=some_password_of_your_postgres_database
 DJANGO_SECRET_KEY=some_django_secret_key_see_below
@@ -49,11 +81,21 @@ DJANGO_SECRET_KEY=some_django_secret_key_see_below
 |:----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |DJANGO_SECRET_KEY	| The secret key is required by Django security middleware. For the security reasons this can not be shared across the internet, and should be setup for each project individual instance separately. Here is a good service to get it: https://djecrety.ir/ |
 
-### Launch of the project
+5. Apply migrations to the database:
+```commandline
+python manage.py makemigrations
+python manage.py migrate
+```
+6. Сreate a superuser:
+```commandline
+python manage.py createsuperuser
+```
+<hr>
 
-To run the project do:
+### Launch project
+
+1. To run the project do:
 ```
 python manage.py runserver
 ```
-
-Send a request using `curl`, `Postman`, etc.
+2. Send a request using `curl`, [Postman](www.postman.com), etc.
