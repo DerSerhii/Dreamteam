@@ -12,7 +12,7 @@ from .API.views import (
     MemberPositionView,
     TeamViewSet,
     TeamMemberAddAPIView,
-    TeamMembershipDeleteView,
+    TeamMemberDeleteView,
     LogoutView,
     LogoutAllView
 )
@@ -26,7 +26,7 @@ urlpatterns = [
     path('member-positions/', MemberPositionView.as_view()),
     path('available-members/', MembersAvailableView.as_view()),
     path('team-add-member/', TeamMemberAddAPIView.as_view()),
-    path('team-delete-member/<int:pk>/', TeamMembershipDeleteView.as_view()),
+    path('team-delete-member/<int:pk>/', TeamMemberDeleteView.as_view()),
     path('', include(router.urls)),
 
     # Authentication URLs

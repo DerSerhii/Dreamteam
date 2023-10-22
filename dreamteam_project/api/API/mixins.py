@@ -13,7 +13,7 @@ class MemberMixin:
 
     def get_queryset(self):
         """
-        Gets a queryset for Member model with selected fields
+        Retrieves a queryset for Member model with selected fields
         and team memberships prefetched.
 
         :return: A queryset for Member model.
